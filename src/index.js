@@ -8,9 +8,11 @@ import './index.css';
 import App from 'containers/App';
 import * as serviceWorker from './serviceWorker';
 
+//스토어 만들때 redux-thunk 미들웨어 적용시켜줌
 const createStoreWithMiddleware = applyMiddleware(ReduxThunk)(createStore);
 
 ReactDOM.render(
+  //하위 컨테이너에서 store에 접근할 수 있도록 함
   <Provider store={createStoreWithMiddleware(reducers)}>
     <App />
   </Provider>
