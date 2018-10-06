@@ -22,6 +22,7 @@ const CardListWrapper = styled.div`
 class CardList extends Component {
 
   handleChange = (value) => {
+    this.props.getCompanyList(value);
   };
 
   render() {
