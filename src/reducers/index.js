@@ -9,5 +9,8 @@ const rootReducer = combineReducers({
 })
 
 function companies(state = [], action) {
+  return state;
   console.log('state', state);
 }
+
+export default rootReducer;
