@@ -2,9 +2,11 @@
  * Created by Ace on 2018. 10. 7..
  */
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import styled from 'styled-components';
 import Card from 'components/Card';
 import SearchBar from 'components/SearchBar';
+import { getCompanyList } from 'actions';
 
 const Wrapper = styled.div`
   width: 100%;
@@ -44,5 +46,4 @@ class CardList extends Component {
   }
 }
 
-export default CardList;
-
+export default connect(null, { getCompanyList })(CardList);
