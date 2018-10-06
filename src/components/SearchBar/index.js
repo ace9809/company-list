@@ -6,17 +6,19 @@ import styled from 'styled-components';
 
 const Wrapper = styled.div`
   margin: 10px;
-  height: 200px;
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
 `;
 
 
 const Input = styled.input`
-  margin-left: 15px;
+  width: 84%;
+  margin-top: 20px;
+  padding-left: 20px;
   font-size: 20px;
   font-weight: bold;
-  width: 100%;
+  height: 40px;
 `;
 
 class SearchBar extends Component {
@@ -37,6 +39,7 @@ class SearchBar extends Component {
         <Input
           value={this.state.value}
           onChange={event => this.onInputChange(event.target.value)}
+          placeholder="Company name.."
         />
       </Wrapper>
     );
