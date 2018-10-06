@@ -8,9 +8,24 @@ const rootReducer = combineReducers({
   companies
 })
 
-function companies(state = [], action) {
-  return state;
+function companies(state = {loading: false, companies: [], error: null }, action) {
   console.log('state', state);
+  console.log('action', action);
+  switch(action.type) {
+    case 'GET_COMPANY_STARTED':
+      return {
+        ...state,
+        loading: true,
+      };
+    case 'GET_COMPANY_SUCCESS':
+      return {
+        ...state,
+        loading: false,
+        error: null,
+        companies: [...state.todos, ...action.payload.data]
+      }
+  }
+  return state;
 }
 
 export default rootReducer;
