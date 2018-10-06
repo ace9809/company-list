@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
+import CardList from 'containers/CardList';
 import Header from 'components/Header';
-import Card from 'components/Card';
 import { getCompanyList } from 'actions';
 
 import test from '../test.json';
@@ -21,16 +21,8 @@ class App extends Component {
     return (
       <Wrapper>
         <Header />
-        {
-          this.props.companies.map((company, index) => {
-            return (
-              <Card
-                key={index}
-                props={company}
-              />
-            )
-          })
-        }
+        <CardList companies={this.props.companies}>
+        </CardList>
       </Wrapper>
     );
   }
