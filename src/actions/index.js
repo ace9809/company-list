@@ -4,7 +4,11 @@
 import axios from 'axios';
 
 function getCompanyListApi(params) {
-  return axios.get(`http://114.207.113.7:8000/company-search/?search=${params}`)
+  if (params) {
+    return axios.get(`http://114.207.113.7:8000/company-search/?search=${params}`)
+  } else {
+    return axios.get(`http://114.207.113.7:8000/company-search/?search`)
+  }
 }
 
 export const getCompanyList = (postId) => dispatch => {
