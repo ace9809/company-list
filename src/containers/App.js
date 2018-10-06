@@ -5,8 +5,6 @@ import CardList from 'containers/CardList';
 import Header from 'components/Header';
 import { getCompanyList } from 'actions';
 
-import test from '../test.json';
-
 const Wrapper = styled.div`
   width: 100%;
   min-height: 100%;
