@@ -3,6 +3,7 @@
  */
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import _ from 'lodash';
 import styled from 'styled-components';
 import Card from 'components/Card';
 import SearchBar from 'components/SearchBar';
@@ -21,15 +22,19 @@ const CardListWrapper = styled.div`
 
 class CardList extends Component {
 
-  handleChange = (value) => {
+  serachCompanies = (value) => {
     this.props.getCompanyList(value);
   };
+
+  debounceSerachCompanies = _.debounce(value => {
+    this.serachCompanies(value);
+  }, 1000);
 
   render() {
     console.log('this.props', this.props);
     return (
       <Wrapper>
-        <SearchBar type="text" onSearchTerm={this.handleChange}/>
+        <SearchBar type="text" onSearchTerm={this.debounceSerachCompanies}/>
         <CardListWrapper>
           {
             this.props.companies.map((company, index) => {
