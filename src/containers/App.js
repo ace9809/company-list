@@ -21,6 +21,16 @@ class App extends Component {
     return (
       <Wrapper>
         <Header />
+        {
+          this.props.companies.map((company, index) => {
+            return (
+              <Card
+                key={index}
+                props={company}
+              />
+            )
+          })
+        }
       </Wrapper>
     );
   }
