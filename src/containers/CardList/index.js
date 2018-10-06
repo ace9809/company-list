@@ -9,8 +9,6 @@ const Wrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;
-  position: relative;
-  width: 100%;
   padding: 4%;
 `;
 
