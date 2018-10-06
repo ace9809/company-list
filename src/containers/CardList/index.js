@@ -16,7 +16,7 @@ const Wrapper = styled.div`
 const CardListWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
-  justify-content: flex-start;
+  justify-content: center;
   padding: 4%;
 `;
 
