@@ -21,10 +21,17 @@ class App extends Component {
     return (
       <Wrapper>
         <Header />
-        <Card />
       </Wrapper>
     );
   }
 }
 
-export default connect(null, { getCompanyList })(App);
+function mapStateToProps(state) {
+  return {
+    companies: state.companies.companies,
+    loading: state.companies.loading,
+    error: state.companies.error
+  }
+}
+
+export default connect(mapStateToProps, { getCompanyList })(App);
