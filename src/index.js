@@ -4,6 +4,7 @@ import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import 'react-app-polyfill/ie9'
 import ReduxThunk from 'redux-thunk'
+import reducers from 'reducers';
 import './index.css';
 import App from 'containers/App';
 import * as serviceWorker from './serviceWorker';
