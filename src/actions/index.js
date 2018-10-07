@@ -4,8 +4,10 @@
 import axios from 'axios';
 
 function getCompanyListApi(params) {
+  console.log('params', params);
+  // return axios.get(`http://114.207.113.7:8000/company-search/?name=${name}&location=${location}`)
   if (params) {
-    return axios.get(`http://114.207.113.7:8000/company-search/?search=${params}`)
+    return axios.get(`http://114.207.113.7:8000/company-search/?name=${params.name}&location=${params.area}`)
   } else {
     return axios.get(`http://114.207.113.7:8000/company-search/?search`)
   }
