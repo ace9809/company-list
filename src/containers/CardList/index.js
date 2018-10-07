@@ -22,8 +22,25 @@ const CardListWrapper = styled.div`
 `;
 
 class CardList extends Component {
-  serachCompanies = (value) => {
-    this.props.getCompanyList(value);
+  constructor(props) {
+    super(props);
+    this.state = {
+      area: '',
+      name: ''
+    };
+  }
+  nameSetState = (value) => {
+    this.setState({ name: value })
+    this.debounceSerachCompanies();
+  };
+
+  areaSetState = (value) => {
+    this.setState({ area: value })
+    this.debounceSerachCompanies();
+  };
+
+  serachCompanies = () => {
+    this.props.getCompanyList(this.state);
   };
 
   debounceSerachCompanies = _.debounce(value => {
@@ -31,11 +48,10 @@ class CardList extends Component {
   }, 1000);
 
   render() {
-    console.log('this.props', this.props);
     return (
       <Wrapper>
-        <Slick onSearchTerm={this.debounceSerachCompanies} />
-        <SearchBar type="text" onSearchTerm={this.debounceSerachCompanies} />
+        <Slick onSearchTerm={this.areaSetState} />
+        <SearchBar type="text" onSearchTerm={this.nameSetState} />
         <CardListWrapper>
           {
             this.props.companies.map((company, index) => {
