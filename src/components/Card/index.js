@@ -69,6 +69,7 @@ class Card extends React.Component {
 
     const IconStyle = {
       cursor: 'pointer',
+      color: 'red'
     };
 
     return (
