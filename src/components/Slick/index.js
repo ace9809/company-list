@@ -36,6 +36,10 @@ const RightArrow = styled(TiArrowRightOutline)`
 
 
 class Slick extends React.Component {
+  onClickArea = (area) => {
+    this.props.onSearchTerm(area.name);
+  }
+
   render() {
     return (
       <Wrapper>
@@ -51,6 +55,7 @@ class Slick extends React.Component {
             areas.map((area, index) => {
               return (
                 <ButtonWrapper
+                  onClick={(e) => this.onClickArea(area)}
                   key={index}
                 >
                   {area.name}

@@ -34,8 +34,8 @@ class CardList extends Component {
     console.log('this.props', this.props);
     return (
       <Wrapper>
-        <Slick />
-        <SearchBar type="text" onSearchTerm={this.debounceSerachCompanies}/>
+        <Slick onSearchTerm={this.debounceSerachCompanies} />
+        <SearchBar type="text" onSearchTerm={this.debounceSerachCompanies} />
         <CardListWrapper>
           {
             this.props.companies.map((company, index) => {
