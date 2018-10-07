@@ -2,8 +2,9 @@
  * Created by Ace on 2018. 10. 7..
  */
 import React, { Component } from 'react';
-import Rating from 'react-rating';
 import styled from 'styled-components';
+import { IconCheckbox } from "react-icon-checkbox";
+import { IoIosHeartEmpty, IoIosHeart } from "react-icons/io";
 
 const Wrapper = styled.div`
   margin: 10px;
@@ -39,7 +40,6 @@ const HeartWrapper = styled.div`
   color: #999;
   display: flex;
   align-items: center;
-  padding-left: 15px;
 `;
 
 const HeartCountWrapper = styled.div`
@@ -48,17 +48,29 @@ const HeartCountWrapper = styled.div`
 `;
 
 class Card extends React.Component {
-  buttonClcik = () => {
-    console.log('이제인');
+  constructor(props) {
+    super(props);
+    this.state = {
+      checked: false
+    };
+  }
+
+  onCheckboxClicked = () => {
+    this.setState({checked: !this.state.checked});
   };
+
   render() {
     const {
       category,
       location,
       name,
       heart
-    }
-      = this.props.company;
+    } = this.props.company;
+
+    const IconStyle = {
+      cursor: 'pointer',
+    };
+
     return (
       <Wrapper>
         <CardInfoWrapper>
@@ -73,6 +85,14 @@ class Card extends React.Component {
           </CategoryWrapper>
         </CardInfoWrapper>
         <HeartWrapper>
+          <IconCheckbox
+            checked={this.state.checked}
+            uncheckedIcon={<IoIosHeartEmpty />}
+            checkedIcon={<IoIosHeart />}
+            onClick={this.onCheckboxClicked}
+            iconContainerStyle={IconStyle}
+
+          />
           <HeartCountWrapper>
             {heart}
           </HeartCountWrapper>
