@@ -2,7 +2,9 @@
  * Created by Ace on 2018. 10. 7..
  */
 import React, { Component } from 'react';
+import Rating from 'react-rating';
 import styled from 'styled-components';
+import { IoIosHeartEmpty, IoIosHeart } from "react-icons/io";
 
 const Wrapper = styled.div`
   margin: 10px;
@@ -34,8 +36,16 @@ const CategoryWrapper = styled.div`
   color: #999;
 `;
 
-const HearWrapper = styled.div`
+const HeartWrapper = styled.div`
   color: #999;
+  display: flex;
+  align-items: center;
+  padding-left: 15px;
+`;
+
+const HeartCountWrapper = styled.div`
+  margin-left: 3px;
+  margin-bottom: 5px;
 `;
 
 const Card = (props) => {
@@ -58,10 +68,16 @@ const Card = (props) => {
           #{category}
         </CategoryWrapper>
       </CardInfoWrapper>
-      <HearWrapper>
-        <input type="checkbox" />
-        {heart}
-      </HearWrapper>
+      <HeartWrapper>
+        <Rating
+          stop={1}
+          emptySymbol={<IoIosHeartEmpty />}
+          fullSymbol={<IoIosHeart />}
+        />
+        <HeartCountWrapper>
+          {heart}
+        </HeartCountWrapper>
+      </HeartWrapper>
     </Wrapper>
   )
 };
