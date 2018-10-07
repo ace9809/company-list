@@ -34,12 +34,16 @@ const CategoryWrapper = styled.div`
   color: #999;
 `;
 
+const HearWrapper = styled.div`
+  color: #999;
+`;
 
 const Card = (props) => {
   const {
     category,
     location,
-    name
+    name,
+    heart
   } = props.company;
   return (
     <Wrapper>
@@ -54,6 +58,10 @@ const Card = (props) => {
           #{category}
         </CategoryWrapper>
       </CardInfoWrapper>
+      <HearWrapper>
+        <input type="checkbox" />
+        {heart}
+      </HearWrapper>
     </Wrapper>
   )
 };
