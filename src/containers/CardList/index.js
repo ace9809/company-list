@@ -5,10 +5,10 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import _ from 'lodash';
 import styled from 'styled-components';
-import Card from 'components/Card';
-import SearchBar from 'components/SearchBar';
-import Slick from 'components/Slick';
-import { getCompanyList } from 'actions';
+import Card from '../../components/Card';
+import SearchBar from '../../components/SearchBar';
+import Slick from '../../components/Slick';
+import { getCompanyList } from '../../actions';
 
 const Wrapper = styled.div`
   width: 100%;
