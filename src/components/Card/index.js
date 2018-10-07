@@ -48,38 +48,45 @@ const HeartCountWrapper = styled.div`
   margin-bottom: 5px;
 `;
 
-const Card = (props) => {
-  const {
-    category,
-    location,
-    name,
-    heart
-  } = props.company;
-  return (
-    <Wrapper>
-      <CardInfoWrapper>
-        <TitleWrapper>
-          {name}
-        </TitleWrapper>
-        <LocationWrapper>
-          {location}
-        </LocationWrapper>
-        <CategoryWrapper>
-          #{category}
-        </CategoryWrapper>
-      </CardInfoWrapper>
-      <HeartWrapper>
-        <Rating
-          stop={1}
-          emptySymbol={<IoIosHeartEmpty />}
-          fullSymbol={<IoIosHeart />}
-        />
-        <HeartCountWrapper>
-          {heart}
-        </HeartCountWrapper>
-      </HeartWrapper>
-    </Wrapper>
-  )
+class Card extends React.Component {
+  buttonClcik = () => {
+    console.log('이제인');
+  };
+  render() {
+    const {
+      category,
+      location,
+      name,
+      heart
+    }
+      = this.props.company;
+    return (
+      <Wrapper>
+        <CardInfoWrapper>
+          <TitleWrapper>
+            {name}
+          </TitleWrapper>
+          <LocationWrapper>
+            {location}
+          </LocationWrapper>
+          <CategoryWrapper>
+            #{category}
+          </CategoryWrapper>
+        </CardInfoWrapper>
+        <HeartWrapper>
+          <Rating
+            stop={1}
+            emptySymbol={<IoIosHeartEmpty />}
+            fullSymbol={<IoIosHeart />}
+            onClick={this.buttonClcik}
+          />
+          <HeartCountWrapper>
+            {heart}
+          </HeartCountWrapper>
+        </HeartWrapper>
+      </Wrapper>
+    )
+  }
 };
 
 export default Card;
