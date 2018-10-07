@@ -4,7 +4,6 @@
 import React, { Component } from 'react';
 import Rating from 'react-rating';
 import styled from 'styled-components';
-import { IoIosHeartEmpty, IoIosHeart } from "react-icons/io";
 
 const Wrapper = styled.div`
   margin: 10px;
@@ -74,12 +73,6 @@ class Card extends React.Component {
           </CategoryWrapper>
         </CardInfoWrapper>
         <HeartWrapper>
-          <Rating
-            stop={1}
-            emptySymbol={<IoIosHeartEmpty />}
-            fullSymbol={<IoIosHeart />}
-            onClick={this.buttonClcik}
-          />
           <HeartCountWrapper>
             {heart}
           </HeartCountWrapper>
