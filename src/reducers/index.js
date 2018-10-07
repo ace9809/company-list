@@ -22,7 +22,7 @@ function companies(state = {loading: false, companies: [], error: null }, action
         ...state,
         loading: false,
         error: null,
-        companies: [...action.payload.data]
+        companies: [...action.payload.data.results]
       }
   }
   return state;
