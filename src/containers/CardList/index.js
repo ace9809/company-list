@@ -7,6 +7,7 @@ import _ from 'lodash';
 import styled from 'styled-components';
 import Card from 'components/Card';
 import SearchBar from 'components/SearchBar';
+import Slick from 'components/Slick';
 import { getCompanyList } from 'actions';
 
 const Wrapper = styled.div`
@@ -21,7 +22,6 @@ const CardListWrapper = styled.div`
 `;
 
 class CardList extends Component {
-
   serachCompanies = (value) => {
     this.props.getCompanyList(value);
   };
@@ -34,6 +34,7 @@ class CardList extends Component {
     console.log('this.props', this.props);
     return (
       <Wrapper>
+        <Slick />
         <SearchBar type="text" onSearchTerm={this.debounceSerachCompanies}/>
         <CardListWrapper>
           {
