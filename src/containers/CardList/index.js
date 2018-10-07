@@ -21,6 +21,14 @@ const CardListWrapper = styled.div`
   padding: 4%;
 `;
 
+const NotListWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  padding: 4%;
+  font-size: 40px;
+  font-weight: black;
+`;
+
 class CardList extends Component {
   constructor(props) {
     super(props);
@@ -52,18 +60,23 @@ class CardList extends Component {
       <Wrapper>
         <Slick onSearchTerm={this.areaSetState} />
         <SearchBar type="text" onSearchTerm={this.nameSetState} />
-        <CardListWrapper>
-          {
-            this.props.companies.map((company, index) => {
-              return (
-                <Card
-                  key={index}
-                  company={company}
-                />
-              )
-            })
-          }
-        </CardListWrapper>
+        { this.props.companies.length === 0 ? (
+          <NotListWrapper>데이터가 없습니다</NotListWrapper>
+        ) : (
+          <CardListWrapper>
+            {
+              this.props.companies.map((company, index) => {
+                return (
+                  <Card
+                    key={index}
+                    company={company}
+                  />
+                )
+              })
+            }
+          </CardListWrapper>
+        )}
+
       </Wrapper>
     );
   }
