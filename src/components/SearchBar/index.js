@@ -29,8 +29,10 @@ class SearchBar extends Component {
 
   onInputChange(value) {
     this.setState({ value });
-    console.log(this.props);
-    this.props.onSearchTerm(value);
+  }
+
+  onBlurChange = () => {
+    this.props.onSearchTerm(this.state.value);
   }
 
   render() {
@@ -39,6 +41,7 @@ class SearchBar extends Component {
         <Input
           value={this.state.value}
           onChange={event => this.onInputChange(event.target.value)}
+          onBlur={this.onBlurChange}
           placeholder="Company name.."
         />
       </Wrapper>
