@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
-import CardList from './CardList';
-import Header from '../components/Header';
-import { getCompanyList } from '../actions';
+import CardList from './../CardList';
+import Header from '../../components/Header';
+import { getCompanyList } from '../../actions';
 
 const Wrapper = styled.div`
   width: 100%;
