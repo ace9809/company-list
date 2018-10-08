@@ -55,16 +55,19 @@ class Card extends React.Component {
     };
   }
 
-  onCheckboxClicked = () => {
+  onCheckboxClicked = (id) => {
     this.setState({checked: !this.state.checked});
-  };
+    if (this.state.checked) this.props.downHeartCount(id);
+    else this.props.upHeartCount(id);
+  }
 
   render() {
     const {
       category,
       location,
       name,
-      heart
+      heart,
+      id
     } = this.props.company;
 
     const IconStyle = {
@@ -90,7 +93,7 @@ class Card extends React.Component {
             checked={this.state.checked}
             uncheckedIcon={<IoIosHeartEmpty />}
             checkedIcon={<IoIosHeart />}
-            onClick={this.onCheckboxClicked}
+            onClick={(e) => this.onCheckboxClicked(id)}
             iconContainerStyle={IconStyle}
 
           />
