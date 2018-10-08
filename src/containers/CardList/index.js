@@ -42,12 +42,12 @@ class CardList extends Component {
   }
 
   nameSetState = (value) => {
-    this.setState({ name: value })
+    this.setState({ name: value });
     this.debounceSerachCompanies();
   };
 
   areaSetState = (value) => {
-    this.setState({ area: value })
+    this.setState({ area: value });
     this.debounceSerachCompanies();
   };
 
@@ -71,13 +71,13 @@ class CardList extends Component {
   fetchMoreData = () => {
     if ((Number(this.props.count) - 20 < this.state.offset)) {
       setTimeout(() => {
-        this.setState({ hasMore: false })
+        this.setState({ hasMore: false });
         this.setState({ offset: this.state.offset + 20  });
         this.props.addCompanyList(this.state.name, this.state.area, this.state.offset);
       }, 500);
     } else {
       setTimeout(() => {
-        this.setState({ hasMore: true })
+        this.setState({ hasMore: true });
         this.setState({ offset: this.state.offset + 20  });
         this.props.addCompanyList(this.state.name, this.state.area, this.state.offset);
       }, 500);

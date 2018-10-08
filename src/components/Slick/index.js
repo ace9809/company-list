@@ -38,7 +38,7 @@ const RightArrow = styled(TiArrowRightOutline)`
 class Slick extends React.Component {
   onClickArea = (area) => {
     if (area.name === "전체") {
-      this.props.onSearchTerm('');
+      this.props.onSearchTerm();
     }
     else this.props.onSearchTerm(area.name);
   }

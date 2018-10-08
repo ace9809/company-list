@@ -2,11 +2,10 @@
  * Created by Ace on 2018. 10. 5..
  */
 import { combineReducers } from 'redux';
-import _ from 'lodash';
 
 const rootReducer = combineReducers({
   companies
-})
+});
 
 function companies(state = {loading: false, companies: [], error: null, count: 0 }, action) {
   console.log('state', state);
@@ -24,7 +23,7 @@ function companies(state = {loading: false, companies: [], error: null, count: 0
         error: null,
         companies: [...action.payload.data.results],
         count: action.payload.data.count
-      }
+      };
     case 'ADD_COMPANY_STARTED':
       return {
         ...state,
@@ -37,7 +36,7 @@ function companies(state = {loading: false, companies: [], error: null, count: 0
         error: null,
         companies: [...state.companies, ...action.payload.data.results],
         count: action.payload.data.count
-      }
+      };
     case 'UPDATE_HEART_STARTED':
       return {
         ...state,
@@ -52,9 +51,10 @@ function companies(state = {loading: false, companies: [], error: null, count: 0
         ),
         loading: false,
         error: null,
-      }
+      };
+    default:
+      return state
   }
-  return state;
 }
 
 export default rootReducer;

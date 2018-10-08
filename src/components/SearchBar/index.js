@@ -12,7 +12,6 @@ const Wrapper = styled.div`
   justify-content: center;
 `;
 
-
 const Input = styled.input`
   width: 84%;
   margin-top: 20px;

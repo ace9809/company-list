@@ -1,7 +1,7 @@
 /**
  * Created by Ace on 2018. 10. 6..
  */
-import React, { Component } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 
 const Wrapper = styled.div`

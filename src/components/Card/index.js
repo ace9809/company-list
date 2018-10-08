@@ -1,7 +1,7 @@
 /**
  * Created by Ace on 2018. 10. 7..
  */
-import React, { Component } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { IconCheckbox } from "react-icon-checkbox";
 import { IoIosHeartEmpty, IoIosHeart } from "react-icons/io";
