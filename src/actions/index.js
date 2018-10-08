@@ -30,7 +30,7 @@ export const getCompanyList = (postId, offset) => dispatch => {
   })
 };
 
-export const fetchCompanyList = (postId, offset) => dispatch => {
+export const addCompanyList = (postId, offset) => dispatch => {
   dispatch({type: 'FETCH_COMPANY_STARTED'});
   return getCompanyListApi(postId, offset).then(
     (response) => {

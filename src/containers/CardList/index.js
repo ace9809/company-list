@@ -9,7 +9,7 @@ import InfiniteScroll from 'react-infinite-scroller'
 import Card from '../../components/Card';
 import SearchBar from '../../components/SearchBar';
 import Slick from '../../components/Slick';
-import { getCompanyList, updateHeart, fetchCompanyList } from '../../actions';
+import { getCompanyList, updateHeart, addCompanyList } from '../../actions';
 
 const Wrapper = styled.div`
   width: 100%;
@@ -73,13 +73,13 @@ class CardList extends Component {
       setTimeout(() => {
         this.setState({ hasMore: false })
         this.setState({ offset: this.state.offset + 20  });
-        this.props.fetchCompanyList(this.state, this.state.offset);
+        this.props.addCompanyList(this.state, this.state.offset);
       }, 500);
     } else {
       setTimeout(() => {
         this.setState({ hasMore: true })
         this.setState({ offset: this.state.offset + 20  });
-        this.props.fetchCompanyList(this.state, this.state.offset);
+        this.props.addCompanyList(this.state, this.state.offset);
       }, 500);
     }
   };
@@ -121,4 +121,4 @@ class CardList extends Component {
   }
 }
 
-export default connect(null, { getCompanyList, updateHeart, fetchCompanyList })(CardList);
+export default connect(null, { getCompanyList, updateHeart, addCompanyList })(CardList);
