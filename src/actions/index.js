@@ -48,24 +48,6 @@ export const fetchCompanyList = (postId, offset) => dispatch => {
   })
 };
 
-const getCompanyStarted = () => ({
-  type: 'GET_COMPANY_STARTED'
-});
-
-const getCompanySuccess = list => ({
-  type: 'GET_COMPANY_SUCCESS',
-  payload: {
-    ...list
-  }
-});
-
-const getCompanyFailure = error => ({
-  type: 'GET_COMPANY_FAILURE',
-  payload: {
-    error
-  }
-});
-
 function updateHeartApi(id, bool) {
   console.log('id', id);
   console.log('bool', bool);
@@ -92,6 +74,35 @@ export const updateHeart = (id, bool) => dispatch => {
 
 };
 
+const apiFailure = error => ({
+  type: 'API_FAILURE',
+  payload: {
+    error
+  }
+});
+
+const getCompanyStarted = () => ({
+  type: 'GET_COMPANY_STARTED'
+});
+
+const getCompanySuccess = list => ({
+  type: 'GET_COMPANY_SUCCESS',
+  payload: {
+    ...list
+  }
+});
+
+const addCompanyStarted = () => ({
+  type: 'ADD_COMPANY_STARTED'
+});
+
+const addCompanySuccess = list => ({
+  type: 'ADD_COMPANY_SUCCESS',
+  payload: {
+    ...list
+  }
+});
+
 const updateHeartStarted = () => ({
   type: 'UPDATE_HEART_STARTED'
 });
@@ -100,12 +111,5 @@ const updateHeartSuccess = list => ({
   type: 'UPDATE_HEART_SUCCESS',
   payload: {
     ...list
-  }
-});
-
-const updateHeartFailure = error => ({
-  type: 'UPDATE_HEART_FAILURE',
-  payload: {
-    error
   }
 });
