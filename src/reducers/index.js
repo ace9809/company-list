@@ -25,12 +25,12 @@ function companies(state = {loading: false, companies: [], error: null, count: 0
         companies: [...action.payload.data.results],
         count: action.payload.data.count
       }
-    case 'FETCH_COMPANY_STARTED':
+    case 'ADD_COMPANY_STARTED':
       return {
         ...state,
         loading: true,
       };
-    case 'FETCH_COMPANY_SUCCESS':
+    case 'ADD_COMPANY_SUCCESS':
       return {
         ...state,
         loading: false,
