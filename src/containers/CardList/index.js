@@ -5,6 +5,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import _ from 'lodash';
 import styled from 'styled-components';
+import InfiniteScroll from 'react-infinite-scroller'
 import Card from '../../components/Card';
 import SearchBar from '../../components/SearchBar';
 import Slick from '../../components/Slick';
@@ -35,9 +36,11 @@ class CardList extends Component {
     this.state = {
       area: '',
       name: '',
-      offset: 20,
+      offset: 0,
+      hasMore: true
     };
   }
+
   nameSetState = (value) => {
     this.setState({ name: value })
     this.debounceSerachCompanies();
@@ -49,6 +52,7 @@ class CardList extends Component {
   };
 
   serachCompanies = () => {
+    this.setState({ hasMore: false })
     this.props.getCompanyList(this.state);
   };
 
@@ -65,10 +69,15 @@ class CardList extends Component {
   }
 
   fetchMoreData = () => {
-    this.setState({ offset: this.state.offset + 20  });
-    setTimeout(() => {
-      this.props.fetchCompanyList(this.state, this.state.offset);
-    }, 500);
+    if ((Number(this.props.count) - 20 < this.state.offset)) {
+      this.setState({ hasMore: false })
+    } else {
+      setTimeout(() => {
+        this.setState({ hasMore: true })
+        this.setState({ offset: this.state.offset + 20  });
+        this.props.fetchCompanyList(this.state, this.state.offset);
+      }, 500);
+    }
   };
 
   render() {
@@ -79,10 +88,12 @@ class CardList extends Component {
         { this.props.companies.length === 0 ? (
           <NotListWrapper>데이터가 없습니다</NotListWrapper>
         ) : (
-          dataLength={this.props.companies}
-          next={this.fetchMoreData}
-          hasMore={true}
-          loader={<h4>Loading...</h4>}
+
+          <InfiniteScroll
+            pageStart={0}
+            loadMore={this.fetchMoreData}
+            hasMore={this.state.hasMore}
+          >
           <CardListWrapper>
 
             {
@@ -98,6 +109,7 @@ class CardList extends Component {
               })
             }
           </CardListWrapper>
+            </InfiniteScroll>
         )}
 
       </Wrapper>
