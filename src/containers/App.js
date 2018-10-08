@@ -19,7 +19,7 @@ class App extends Component {
     return (
       <Wrapper>
         <Header />
-        <CardList companies={this.props.companies} />
+        <CardList companies={this.props.companies} count={this.props.count} />
       </Wrapper>
     );
   }
@@ -28,6 +28,7 @@ class App extends Component {
 function mapStateToProps(state) {
   return {
     companies: state.companies.companies,
+    count: state.companies.count,
     loading: state.companies.loading,
     error: state.companies.error
   }
