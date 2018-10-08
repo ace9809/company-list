@@ -3,7 +3,6 @@
  */
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import InfiniteScroll from "react-infinite-scroll-component";
 import _ from 'lodash';
 import styled from 'styled-components';
 import Card from '../../components/Card';
@@ -80,12 +79,10 @@ class CardList extends Component {
         { this.props.companies.length === 0 ? (
           <NotListWrapper>데이터가 없습니다</NotListWrapper>
         ) : (
-        <InfiniteScroll
           dataLength={this.props.companies}
           next={this.fetchMoreData}
           hasMore={true}
           loader={<h4>Loading...</h4>}
-        >
           <CardListWrapper>
 
             {
@@ -101,7 +98,6 @@ class CardList extends Component {
               })
             }
           </CardListWrapper>
-        </InfiniteScroll>
         )}
 
       </Wrapper>
