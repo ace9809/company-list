@@ -19,8 +19,7 @@ class App extends Component {
     return (
       <Wrapper>
         <Header />
-        <CardList companies={this.props.companies}>
-        </CardList>
+        <CardList companies={this.props.companies} />
       </Wrapper>
     );
   }
