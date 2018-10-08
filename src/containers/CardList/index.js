@@ -3,12 +3,13 @@
  */
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import InfiniteScroll from "react-infinite-scroll-component";
 import _ from 'lodash';
 import styled from 'styled-components';
 import Card from '../../components/Card';
 import SearchBar from '../../components/SearchBar';
 import Slick from '../../components/Slick';
-import { getCompanyList, updateHeart } from '../../actions';
+import { getCompanyList, updateHeart, fetchCompanyList } from '../../actions';
 
 const Wrapper = styled.div`
   width: 100%;
@@ -34,7 +35,8 @@ class CardList extends Component {
     super(props);
     this.state = {
       area: '',
-      name: ''
+      name: '',
+      offset: 20,
     };
   }
   nameSetState = (value) => {
@@ -63,6 +65,13 @@ class CardList extends Component {
     this.props.updateHeart(id, false);
   }
 
+  fetchMoreData = () => {
+    this.setState({ offset: this.state.offset + 20  });
+    setTimeout(() => {
+      this.props.fetchCompanyList(this.state, this.state.offset);
+    }, 500);
+  };
+
   render() {
     return (
       <Wrapper>
@@ -71,7 +80,14 @@ class CardList extends Component {
         { this.props.companies.length === 0 ? (
           <NotListWrapper>데이터가 없습니다</NotListWrapper>
         ) : (
+        <InfiniteScroll
+          dataLength={this.props.companies}
+          next={this.fetchMoreData}
+          hasMore={true}
+          loader={<h4>Loading...</h4>}
+        >
           <CardListWrapper>
+
             {
               this.props.companies.map((company, index) => {
                 return (
@@ -85,6 +101,7 @@ class CardList extends Component {
               })
             }
           </CardListWrapper>
+        </InfiniteScroll>
         )}
 
       </Wrapper>
@@ -92,4 +109,4 @@ class CardList extends Component {
   }
 }
 
-export default connect(null, { getCompanyList, updateHeart })(CardList);
+export default connect(null, { getCompanyList, updateHeart, fetchCompanyList })(CardList);
