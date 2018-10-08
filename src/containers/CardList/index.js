@@ -8,7 +8,7 @@ import styled from 'styled-components';
 import Card from '../../components/Card';
 import SearchBar from '../../components/SearchBar';
 import Slick from '../../components/Slick';
-import { getCompanyList } from '../../actions';
+import { getCompanyList, updateHeart } from '../../actions';
 
 const Wrapper = styled.div`
   width: 100%;
@@ -55,6 +55,14 @@ class CardList extends Component {
     this.serachCompanies(value);
   }, 1000);
 
+  upHeartCount = (id) => {
+    this.props.updateHeart(id, true);
+  };
+
+  downHeartCount = (id) => {
+    this.props.updateHeart(id, false);
+  }
+
   render() {
     return (
       <Wrapper>
@@ -70,6 +78,8 @@ class CardList extends Component {
                   <Card
                     key={index}
                     company={company}
+                    upHeartCount={this.upHeartCount}
+                    downHeartCount={this.downHeartCount}
                   />
                 )
               })
@@ -82,4 +92,4 @@ class CardList extends Component {
   }
 }
 
-export default connect(null, { getCompanyList })(CardList);
+export default connect(null, { getCompanyList, updateHeart })(CardList);
