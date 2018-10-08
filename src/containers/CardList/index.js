@@ -53,7 +53,7 @@ class CardList extends Component {
 
   serachCompanies = () => {
     this.setState({ hasMore: false })
-    this.props.getCompanyList(this.state, this.state.offset);
+    this.props.getCompanyList(this.state.name, this.state.area);
   };
 
   debounceSerachCompanies = _.debounce(value => {
@@ -73,13 +73,13 @@ class CardList extends Component {
       setTimeout(() => {
         this.setState({ hasMore: false })
         this.setState({ offset: this.state.offset + 20  });
-        this.props.addCompanyList(this.state, this.state.offset);
+        this.props.addCompanyList(this.state.name, this.state.area, this.state.offset);
       }, 500);
     } else {
       setTimeout(() => {
         this.setState({ hasMore: true })
         this.setState({ offset: this.state.offset + 20  });
-        this.props.addCompanyList(this.state, this.state.offset);
+        this.props.addCompanyList(this.state.name, this.state.area, this.state.offset);
       }, 500);
     }
   };

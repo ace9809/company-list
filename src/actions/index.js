@@ -3,18 +3,13 @@
  */
 import axios from 'axios';
 
-function getCompanyListApi(params, offset) {
-  // return axios.get(`http://114.207.113.7:8000/company-search/?name=${name}&location=${location}`)
-  if (params) {
-    return axios.get(`http://114.207.113.7:8000/company-search/?name=${params.name}&location=${params.area}&offset=${offset}`)
-  } else {
-    return axios.get(`http://114.207.113.7:8000/company-search/?search`)
-  }
+function getCompanyListApi(name='', area='', offset) {
+  return axios.get(`http://114.207.113.7:8000/company-search/?name=${name}&location=${area}&offset=${offset}`)
 }
 
-export const getCompanyList = (postId, offset) => dispatch => {
+export const getCompanyList = (name, area) => dispatch => {
   dispatch(getCompanyStarted);
-  return getCompanyListApi(postId).then(
+  return getCompanyListApi(name, area).then(
     (response) => {
       dispatch(getCompanySuccess(response))
     }
@@ -24,9 +19,9 @@ export const getCompanyList = (postId, offset) => dispatch => {
   })
 };
 
-export const addCompanyList = (postId, offset) => dispatch => {
+export const addCompanyList = (name, area, offset) => dispatch => {
   dispatch(addCompanyStarted);
-  return getCompanyListApi(postId, offset).then(
+  return getCompanyListApi(name, area, offset).then(
     (response) => {
       dispatch(addCompanySuccess(response))
     }
