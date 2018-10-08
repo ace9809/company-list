@@ -29,11 +29,12 @@ class SearchBar extends Component {
 
   onInputChange(value) {
     this.setState({ value });
+    this.debounceOnSearchTerm();
   }
 
-  onBlurChange = () => {
+  debounceOnSearchTerm = _.debounce(() => {
     this.props.onSearchTerm(this.state.value);
-  }
+  }, 500);
 
   render() {
     return (
@@ -41,7 +42,6 @@ class SearchBar extends Component {
         <Input
           value={this.state.value}
           onChange={event => this.onInputChange(event.target.value)}
-          onBlur={this.onBlurChange}
           placeholder="Company name.."
         />
       </Wrapper>
