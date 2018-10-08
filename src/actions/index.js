@@ -13,37 +13,25 @@ function getCompanyListApi(params, offset) {
 }
 
 export const getCompanyList = (postId, offset) => dispatch => {
-  dispatch({type: 'GET_COMPANY_STARTED'});
+  dispatch(getCompanyStarted);
   return getCompanyListApi(postId).then(
     (response) => {
-      dispatch({
-        type: 'GET_COMPANY_SUCCESS',
-        payload: response
-      })
+      dispatch(getCompanySuccess(response))
     }
   ).catch(error => {
-    dispatch({
-      type: 'GET_COMPANY_FAILURE',
-      payload: error
-    });
+    dispatch(apiFailure(error));
     throw(error);
   })
 };
 
 export const addCompanyList = (postId, offset) => dispatch => {
-  dispatch({type: 'FETCH_COMPANY_STARTED'});
+  dispatch(addCompanyStarted);
   return getCompanyListApi(postId, offset).then(
     (response) => {
-      dispatch({
-        type: 'FETCH_COMPANY_SUCCESS',
-        payload: response
-      })
+      dispatch(addCompanySuccess(response))
     }
   ).catch(error => {
-    dispatch({
-      type: 'FETCH_COMPANY_FAILURE',
-      payload: error
-    });
+    dispatch(apiFailure(error));
     throw(error);
   })
 };
@@ -56,19 +44,13 @@ function updateHeartApi(id, bool) {
 }
 
 export const updateHeart = (id, bool) => dispatch => {
-  dispatch({type: 'UPDATE_HEART_STARTED'});
+  dispatch(updateHeartStarted);
   return updateHeartApi(id, bool).then(
     (response) => {
-      dispatch({
-        type: 'UPDATE_HEART_SUCCESS',
-        payload: response
-      })
+      dispatch(updateHeartSuccess(response))
     }
   ).catch(error => {
-    dispatch({
-      type: 'UPDATE_HEART_FAILURE',
-      payload: error
-    });
+    dispatch(apiFailure(error));
     throw(error);
   })
 
