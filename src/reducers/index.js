@@ -22,6 +22,18 @@ function companies(state = {loading: false, companies: [], error: null }, action
         ...state,
         loading: false,
         error: null,
+        companies: [...action.payload.data.results]
+      }
+    case 'FETCH_COMPANY_STARTED':
+      return {
+        ...state,
+        loading: true,
+      };
+    case 'FETCH_COMPANY_SUCCESS':
+      return {
+        ...state,
+        loading: false,
+        error: null,
         companies: [...state.companies, ...action.payload.data.results]
       }
     case 'UPDATE_HEART_STARTED':
