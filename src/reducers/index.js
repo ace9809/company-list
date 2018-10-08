@@ -33,7 +33,7 @@ function companies(state = {loading: false, companies: [], error: null }, action
       return {
         ...state,
         companies: state.companies.map(
-          (company, i) => i === action.payload.data.id ? {...company, company: action.payload.data}
+          (company, i) => company.id === action.payload.data.id ? {...company, ...action.payload.data}
             : company
         ),
         loading: false,
