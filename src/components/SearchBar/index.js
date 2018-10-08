@@ -2,6 +2,7 @@
  * Created by Ace on 2018. 10. 6..
  */
 import React, { Component } from 'react';
+import _ from 'lodash';
 import styled from 'styled-components';
 
 const Wrapper = styled.div`
