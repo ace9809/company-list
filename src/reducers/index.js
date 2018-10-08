@@ -24,6 +24,21 @@ function companies(state = {loading: false, companies: [], error: null }, action
         error: null,
         companies: [...action.payload.data.results]
       }
+    case 'UPDATE_HEART_STARTED':
+      return {
+        ...state,
+        loading: true,
+      };
+    case 'UPDATE_HEART_SUCCESS':
+      return {
+        ...state,
+        companies: state.companies.map(
+          (company, i) => i === action.payload.data.id ? {...company, company: action.payload.data}
+            : company
+        ),
+        loading: false,
+        error: null,
+      }
   }
   return state;
 }
