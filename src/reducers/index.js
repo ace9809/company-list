@@ -8,7 +8,7 @@ const rootReducer = combineReducers({
   companies
 })
 
-function companies(state = {loading: false, companies: [], error: null }, action) {
+function companies(state = {loading: false, companies: [], error: null, count: 0 }, action) {
   console.log('state', state);
   console.log('action', action);
   switch(action.type) {
@@ -22,7 +22,8 @@ function companies(state = {loading: false, companies: [], error: null }, action
         ...state,
         loading: false,
         error: null,
-        companies: [...action.payload.data.results]
+        companies: [...action.payload.data.results],
+        count: action.payload.data.count
       }
     case 'FETCH_COMPANY_STARTED':
       return {
@@ -34,7 +35,8 @@ function companies(state = {loading: false, companies: [], error: null }, action
         ...state,
         loading: false,
         error: null,
-        companies: [...state.companies, ...action.payload.data.results]
+        companies: [...state.companies, ...action.payload.data.results],
+        count: action.payload.data.count
       }
     case 'UPDATE_HEART_STARTED':
       return {
