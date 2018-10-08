@@ -3,6 +3,7 @@
  */
 import React, { Component } from 'react';
 import _ from 'lodash';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 const Wrapper = styled.div`
@@ -48,6 +49,10 @@ class SearchBar extends Component {
     );
   }
 }
+
+SearchBar.propTypes = {
+  onSearchTerm: PropTypes.func
+};
 
 export default SearchBar;
 

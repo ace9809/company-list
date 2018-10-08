@@ -3,6 +3,7 @@
  */
 import React from "react";
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 import { TiArrowLeftOutline, TiArrowRightOutline } from "react-icons/ti";
 import Carousel from '@brainhubeu/react-carousel';
 import '@brainhubeu/react-carousel/lib/style.css';
@@ -71,5 +72,9 @@ class Slick extends React.Component {
     );
   }
 }
+
+Slick.propTypes = {
+  onSearchTerm: PropTypes.func
+};
 
 export default Slick;

@@ -5,6 +5,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import _ from 'lodash';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 import InfiniteScroll from 'react-infinite-scroller'
 import Card from '../../components/Card';
 import SearchBar from '../../components/SearchBar';
@@ -120,5 +121,11 @@ class CardList extends Component {
     );
   }
 }
+
+CardList.propTypes = {
+  companies: PropTypes.array,
+  count: PropTypes.number
+};
+
 
 export default connect(null, { getCompanyList, updateHeart, addCompanyList })(CardList);

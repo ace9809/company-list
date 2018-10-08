@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 import CardList from './CardList';
 import Header from '../components/Header';
 import { getCompanyList } from '../actions';
@@ -29,9 +30,12 @@ function mapStateToProps(state) {
   return {
     companies: state.companies.companies,
     count: state.companies.count,
-    loading: state.companies.loading,
-    error: state.companies.error
   }
 }
+
+App.propTypes = {
+  companies: PropTypes.array,
+  count: PropTypes.number
+};
 
 export default connect(mapStateToProps, { getCompanyList })(App);

@@ -3,6 +3,7 @@
  */
 import React from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 import { IconCheckbox } from "react-icon-checkbox";
 import { IoIosHeartEmpty, IoIosHeart } from "react-icons/io";
 
@@ -104,6 +105,12 @@ class Card extends React.Component {
       </Wrapper>
     )
   }
+};
+
+Card.propTypes = {
+  company: PropTypes.object,
+  downHeartCount: PropTypes.func,
+  upHeartCount: PropTypes.func
 };
 
 export default Card;
