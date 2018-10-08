@@ -3,17 +3,16 @@
  */
 import axios from 'axios';
 
-function getCompanyListApi(params) {
-  console.log('params', params);
+function getCompanyListApi(params, offset) {
   // return axios.get(`http://114.207.113.7:8000/company-search/?name=${name}&location=${location}`)
   if (params) {
-    return axios.get(`http://114.207.113.7:8000/company-search/?name=${params.name}&location=${params.area}`)
+    return axios.get(`http://114.207.113.7:8000/company-search/?name=${params.name}&location=${params.area}&offset=${offset}`)
   } else {
     return axios.get(`http://114.207.113.7:8000/company-search/?search`)
   }
 }
 
-export const getCompanyList = (postId) => dispatch => {
+export const getCompanyList = (postId, offset) => dispatch => {
   dispatch({type: 'GET_COMPANY_STARTED'});
   return getCompanyListApi(postId).then(
     (response) => {
@@ -29,7 +28,24 @@ export const getCompanyList = (postId) => dispatch => {
     });
     throw(error);
   })
+};
 
+export const fetchCompanyList = (postId, offset) => dispatch => {
+  dispatch({type: 'FETCH_COMPANY_STARTED'});
+  return getCompanyListApi(postId, offset).then(
+    (response) => {
+      dispatch({
+        type: 'FETCH_COMPANY_SUCCESS',
+        payload: response
+      })
+    }
+  ).catch(error => {
+    dispatch({
+      type: 'FETCH_COMPANY_FAILURE',
+      payload: error
+    });
+    throw(error);
+  })
 };
 
 const getCompanyStarted = () => ({
