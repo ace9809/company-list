@@ -96,7 +96,6 @@ class Card extends React.Component {
             checkedIcon={<IoIosHeart />}
             onClick={(e) => this.onCheckboxClicked(id)}
             iconContainerStyle={IconStyle}
-
           />
           <HeartCountWrapper>
             {heart}

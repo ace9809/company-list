@@ -32,8 +32,6 @@ export const addCompanyList = (name, area, offset) => dispatch => {
 };
 
 function updateHeartApi(id, bool) {
-  console.log('id', id);
-  console.log('bool', bool);
   if (bool) return axios.put(`http://114.207.113.7:8000/company-heart/${id}/?up`)
   else return axios.put(`http://114.207.113.7:8000/company-heart/${id}/?down`)
 }

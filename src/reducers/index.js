@@ -8,8 +8,6 @@ const rootReducer = combineReducers({
 });
 
 function companies(state = {loading: false, companies: [], error: null, count: 0 }, action) {
-  console.log('state', state);
-  console.log('action', action);
   switch(action.type) {
     case 'GET_COMPANY_STARTED':
       return {
