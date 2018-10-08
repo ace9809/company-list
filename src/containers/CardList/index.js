@@ -53,7 +53,7 @@ class CardList extends Component {
 
   debounceSerachCompanies = _.debounce(value => {
     this.serachCompanies(value);
-  }, 1000);
+  }, 500);
 
   upHeartCount = (id) => {
     this.props.updateHeart(id, true);
