@@ -6,7 +6,7 @@ import styled from 'styled-components';
 
 const Wrapper = styled.div`
   widht: 100%;
-  height: 70px;
+  height: 50px;
   background-color: #3b3b3b;
   display: flex;
   align-items: center;
@@ -23,7 +23,7 @@ const Header = () => {
   return (
     <Wrapper>
       <TitleWrapper>
-        산업체검색 페이지
+        산업체 검색 페이지
       </TitleWrapper>
     </Wrapper>
   )

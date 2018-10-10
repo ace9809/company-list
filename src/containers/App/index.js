@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import CardList from './../CardList';
-import Header from '../../components/Header';
 import { getCompanyList } from '../../actions';
 
 const Wrapper = styled.div`
@@ -19,7 +18,6 @@ class App extends Component {
   render() {
     return (
       <Wrapper>
-        <Header />
         <CardList companies={this.props.companies} count={this.props.count} />
       </Wrapper>
     );

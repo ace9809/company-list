@@ -16,6 +16,24 @@ const Wrapper = styled.div`
   width: 100%;
 `;
 
+const Container = styled.div`
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 80px;
+  width: 100%;
+  background: white;
+`;
+
+const CardWrapper = styled.div`
+  left: 0;
+  top: 0;
+  right: 400px;
+  bottom: 0;
+  background: repeat 0 0;
+  border-right: 1px solid #bbbbbb;
+`;
+
 const CardListWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
@@ -88,35 +106,35 @@ class CardList extends Component {
   render() {
     return (
       <Wrapper>
-        <Slick onSearchTerm={this.areaSetState} />
-        <SearchBar type="text" onSearchTerm={this.nameSetState} />
-        { this.props.companies.length === 0 ? (
-          <NotListWrapper>데이터가 없습니다</NotListWrapper>
-        ) : (
+		<SearchBar type="text" onSearchTerm={this.nameSetState} />
+		<Container>
+            { this.props.companies.length === 0 ? (
+              <NotListWrapper>데이터가 없습니다</NotListWrapper>
+            ) : (
 
-          <InfiniteScroll
-            pageStart={0}
-            loadMore={this.fetchMoreData}
-            hasMore={this.state.hasMore}
-          >
-          <CardListWrapper>
+              <InfiniteScroll
+                pageStart={0}
+                loadMore={this.fetchMoreData}
+                hasMore={this.state.hasMore}
+              >
+              <CardListWrapper>
 
-            {
-              this.props.companies.map((company, index) => {
-                return (
-                  <Card
-                    key={index}
-                    company={company}
-                    upHeartCount={this.upHeartCount}
-                    downHeartCount={this.downHeartCount}
-                  />
-                )
-              })
-            }
-          </CardListWrapper>
-            </InfiniteScroll>
-        )}
-
+                {
+                  this.props.companies.map((company, index) => {
+                    return (
+                      <Card
+                        key={index}
+                        company={company}
+                        upHeartCount={this.upHeartCount}
+                        downHeartCount={this.downHeartCount}
+                      />
+                    )
+                  })
+                }
+              </CardListWrapper>
+                </InfiniteScroll>
+            )}
+		</Container>
       </Wrapper>
     );
   }
