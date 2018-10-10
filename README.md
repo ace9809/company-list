@@ -9,7 +9,7 @@
 - 회사 좋아요 / 좋아요 해제
 - 무한 스크롤링
 
-## backlog
+## BackLog
 
 - 좋아요 후 검색 시 좋아요 한 회사가 다름에도 불구하고 하트가 칠해져 있음
 - localStorage or ip check 해서 하트 체크
