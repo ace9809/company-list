@@ -30,6 +30,7 @@ const TitleWrapper = styled.div`
 const LocationWrapper = styled.div`
   margin-top: 10px;
   height: 60px;
+  overflow: hidden; 
 `;
 
 const CategoryWrapper = styled.div`
