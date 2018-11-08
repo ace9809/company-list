@@ -6,34 +6,34 @@ import CardList from './../CardList';
 import { getCompanyList } from '../../actions';
 
 const Wrapper = styled.div`
-  width: 100%;
-  min-height: 100%;
+width: 100%;
+min-height: 100%;
 `;
 
 class App extends Component {
-  componentDidMount() {
-    this.props.getCompanyList();
-  }
+    componentDidMount() {
+        this.props.getCompanyList();
+    }
 
-  render() {
-    return (
-      <Wrapper>
-        <CardList companies={this.props.companies} count={this.props.count} />
-      </Wrapper>
-    );
-  }
+    render() {
+        return (
+                <Wrapper>
+                <CardList companies={this.props.companies} count={this.props.count} />
+                </Wrapper>
+               );
+    }
 }
 
 function mapStateToProps(state) {
-  return {
-    companies: state.companies.companies,
-    count: state.companies.count,
-  }
+    return {
+        companies: state.companies.companies,
+        count: state.companies.count,
+    }
 }
 
 App.propTypes = {
-  companies: PropTypes.array,
-  count: PropTypes.number
+    companies: PropTypes.array,
+    count: PropTypes.number
 };
 
 export default connect(mapStateToProps, { getCompanyList })(App);

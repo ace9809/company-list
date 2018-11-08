@@ -30,6 +30,8 @@ const TitleWrapper = styled.div`
 const LocationWrapper = styled.div`
   margin-top: 10px;
   height: 60px;
+  overflow: hidden;
+  display: -webkit-box;
 `;
 
 const CategoryWrapper = styled.div`
@@ -48,6 +50,26 @@ const HeartCountWrapper = styled.div`
   margin-bottom: 5px;
 `;
 
+const LinkGreen = styled.a`
+  color: #0b0;
+  text-decoration: none;
+`;
+
+const LinkBlack = styled.a`
+  color: #000;
+  text-decoration: none;
+`;
+
+const SpanRed = styled.span`
+  color: #b00;
+  text-decoration: none;
+`;
+
+const SpanBlue = styled.span`
+  color: #00b;
+  text-decoration: none;
+`;
+
 class Card extends React.Component {
   constructor(props) {
     super(props);
@@ -63,11 +85,15 @@ class Card extends React.Component {
   }
 
   render() {
-    const {
+    var {
       category,
       location,
+      annual_income,
+      sales_lowest,
+      sales_maximum,
       name,
       heart,
+      sites,
       id
     } = this.props.company;
 
@@ -76,6 +102,30 @@ class Card extends React.Component {
       color: 'red'
     };
 
+	let site = '';
+	if (sites) {
+      site = <LinkGreen href={sites} target='_blank'>#사이트</LinkGreen>;
+    } 
+
+    let txt_annual_income = '';
+	if (annual_income != 0) {
+        annual_income = Math.round(annual_income / 10000);
+      txt_annual_income = <SpanRed>{annual_income}만</SpanRed>
+    } 
+
+    let txt_sales_minimum = '';
+    if (sales_lowest != 0) {
+        sales_lowest = Math.round(sales_lowest / 100000000);
+        sales_maximum = Math.round(sales_maximum / 100000000);
+        if (sales_lowest != sales_maximum){
+            txt_sales_minimum = <SpanBlue>{sales_lowest}억 ~ {sales_maximum}억</SpanBlue>
+        } else {
+            txt_sales_minimum = <SpanBlue>{sales_maximum}억</SpanBlue>
+        }
+    }
+
+    let link_location = 'https://www.google.com/maps/search/' + location;
+
     return (
       <Wrapper>
         <CardInfoWrapper>
@@ -83,10 +133,10 @@ class Card extends React.Component {
             {name}
           </TitleWrapper>
           <LocationWrapper>
-            {location}
+            <LinkBlack href={link_location} target='_blank'>{location}</LinkBlack>
           </LocationWrapper>
           <CategoryWrapper>
-            #{category}
+          {site} {txt_annual_income} {txt_sales_minimum}
           </CategoryWrapper>
         </CardInfoWrapper>
         <HeartWrapper>
